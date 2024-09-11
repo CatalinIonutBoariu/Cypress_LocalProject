@@ -27,11 +27,6 @@ export class OrderPlacement {
         Utils.selectFromDropdown(shippingPage.region, credentials.region);
         Utils.type(shippingPage.Zip, Utils.numeric(6));
         Utils.type(shippingPage.phone, Utils.numeric(10));
-        cy.xpath(shippingPage.saveAddress).then(($el) => {
-            if ($el.is(':visible')) {
-              Utils.clickOn(shippingPage.saveAddress);
-            }
-          });
     }
 
     static checkTotalPrice(productPrice, shippingPrice) {

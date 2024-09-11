@@ -26,7 +26,7 @@ require('cypress-xpath');
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-before(() => {
+beforeEach(() => {
     if(Cypress.currentTest.titlePath[0].includes('Logged In')){
         cy.visit(URLs.main + URLs.loginPage)
 

@@ -23,6 +23,7 @@ describe('Order placement process - Logged In', () => {
         Utils.clickOn(generic.checkoutButton);
         Utils.clickOn(shippingPage.newAdress);
         OrderPlacement.inputShippingDetails();
+        Utils.clickOn(shippingPage.saveAddress);
         Utils.clickOn(generic.button('Ship here'));
         cy.waitForStableDOM()      
         Utils.clickOn(shippingPage.shippingMethod(1));
