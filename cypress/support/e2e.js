@@ -14,7 +14,22 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+import { credentials } from '../fixtures/Credentials';
+import { URLs } from '../fixtures/URLs'
+import { login } from '../fixtures/Xpaths'
 import './commands'
+
+require('cypress-xpath');
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+before(() => {
+    cy.visit(URLs.main + URLs.loginPage)
+
+    cy.xpath(login.email).type(credentials.email)
+    cy.xpath(login.password).first().type(credentials.password)
+    cy.xpath(login.submit).first().click()
+
+    cy.visit(URLs.main)
+})

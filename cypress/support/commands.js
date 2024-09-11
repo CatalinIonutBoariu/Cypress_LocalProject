@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+/// <reference types="cypress-xpath" />
+
+Cypress.Commands.add('clickOn', (locator, index) => {
+    const updatedLocator = index ? `${locator}[${index}]` : locator;
+    cy.xpath(updatedLocator)
+      .scrollIntoView()
+      .should('be.visible')
+      .then(() => {
+          cy.xpath(updatedLocator).click();
+      });
+});
+
+Cypress.Commands.add('hoverOver', (locator, index) => {
+    const updatedLocator = index ? `${locator}[${index}]` : locator;
+    cy.xpath(updatedLocator)
+      .scrollIntoView()
+      .should('be.visible')
+      .then(() => {
+          cy.xpath(updatedLocator).trigger('mouseover');
+      });
+});
