@@ -1,3 +1,4 @@
+
 export class Utils {
     static clickOn(locator, index){
         index ? cy.clickOn(locator, index) : cy.clickOn(locator);
@@ -19,5 +20,14 @@ export class Utils {
         var possible = '1234567890';
         for(var i = 0; i< length; i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
         return text;
+    }
+
+    static fetchPrice(locator) {
+        debugger
+        cy.xpath(locator).invoke('text').then((priceText) => {
+            debugger
+        const numericValue = parseFloat(priceText.replace('$', ''));
+        return numericValue
+  });
     }
 }

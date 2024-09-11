@@ -27,11 +27,16 @@ require('cypress-xpath');
 // require('./commands')
 
 before(() => {
-    cy.visit(URLs.main + URLs.loginPage)
+    if(Cypress.currentTest.titlePath[0].includes('Logged In')){
+        cy.visit(URLs.main + URLs.loginPage)
 
-    cy.xpath(login.email).type(credentials.email)
-    cy.xpath(login.password).first().type(credentials.password)
-    cy.xpath(login.submit).first().click()
-
-    cy.visit(URLs.main)
+        cy.xpath(login.email).type(credentials.email)
+        cy.xpath(login.password).first().type(credentials.password)
+        cy.xpath(login.submit).first().click()
+    
+        cy.visit(URLs.main)
+    } else {
+        cy.visit(URLs.main)
+    }
+    
 })

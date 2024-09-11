@@ -18,7 +18,8 @@ export const menCatalog = {
 export const productPage = {
     sizes: (size) => { return `//div[@class='swatch-attribute size']//*[normalize-space()='${size}']`},
     colors: (color) => { return `//div[@class='swatch-attribute color']//*[@option-label= '${color}']`},
-    quantity: "//input[@id='qty']"
+    quantity: "//input[@id='qty']",
+    price: "//div[@class='product-info-price']//span[@class='price']"
 
 }
 
@@ -32,11 +33,18 @@ export const shippingPage = {
     Zip: "//input[@name='postcode']",
     country: "//select[@name='country_id']",
     phone: "//input[@name='telephone']",
+    email: "//div[@id='checkout-step-shipping']//input[@id='customer-email']",
+    shippingMethod: (index) => { return `(//input[@type='radio'])[${index}]`},
+    shippingPrice: "(//div[@id='checkout-shipping-method-load']//span[@class='price'])[1]",
+    totalPrice: "//tr[@class='grand totals']//span[@class='price']",
+    newAdress: "//div[@class='new-address-popup']/button",
+    saveAddress: "//input[@id='shipping-save-in-address-book']"
 }
 
 export const generic = {
-    addButton : "//span[normalize-space()='Add to Cart']",
     cartDropdown: "//div[@data-block='minicart']",
     checkoutButton: "//button[@id='top-cart-btn-checkout']",
-    nextButton: "//span[normalize-space()='Next']"
+    button : (text) => { return `//span[normalize-space()='${text}']`},
+    accountDropdown: "//li[@class='customer-welcome active']",
+    logout: "//li[@class='customer-welcome active']//li[@class='authorization-link']"
 }
