@@ -18,6 +18,8 @@ import { credentials } from '../fixtures/Credentials';
 import { URLs } from '../fixtures/URLs'
 import { login } from '../fixtures/Xpaths'
 import './commands'
+const { registerCommand } = require('cypress-wait-for-stable-dom')
+registerCommand()
 
 require('cypress-xpath');
 
